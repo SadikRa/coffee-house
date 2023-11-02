@@ -14,17 +14,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
-    children: [
-      {
-        path: 'addCoffee',
-        element: <AddACoffee></AddACoffee>
-      },
-      {
-        path: 'updateCoffee',
-        element: <UpdateCoffee></UpdateCoffee>
-      }
-    ]
+    loader: () => fetch('http://localhost:5000/coffees')
   },
+  {
+    path: 'addCoffee',
+    element: <AddACoffee></AddACoffee>
+  },
+  {
+    path: 'updateCoffee',
+    element: <UpdateCoffee></UpdateCoffee>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
